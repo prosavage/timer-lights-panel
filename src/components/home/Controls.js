@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import Button from "../ui/Button";
 import axios from 'axios';
@@ -25,16 +25,35 @@ const Control = styled.div`
     margin: 0 5px;
   }
   
+  label {
+    margin: 0 5px 0 0;
+  }
 `
+
+
 
 const Controls = () => {
 
+    const [message, setMessage] = useState("Please input a password and click a button.")
+    const [password, setPassword] = useState("");
+    const [minutes, setMinutes] = useState("")
+
     const turnOn = () => {
-        axios.get(BASE_URL + "/lights-on").then(res => console.log(res))
+        axios.post(BASE_URL + "/lights/on", {
+            pass: password,
+            minutes
+        }).then(res => {
+            setMessage(res.data.message)
+        })
+
     }
 
     const turnOff = () => {
-        axios.get(BASE_URL + "/lights-off").then(res => console.log(res))
+        axios.post(BASE_URL + "/lights/off", {
+            pass: password
+        }).then(res => {
+            setMessage(res.data.message)
+        })
     }
 
 
@@ -43,16 +62,38 @@ const Controls = () => {
         <ControlsContainer>
             <ControlGroup>
                 <Control>
+                    <label>Password: </label>
+                    <Input value={password}
+                           onChange={(event) => setPassword(event.target.value)}
+                           type={"password"}
+                           placeholder={"password"}
+                           size={10}
+                    />
+                </Control>
+            </ControlGroup>
+
+            <ControlGroup>
+                <Control>
                     <Button onClick={() => turnOn()}>Turn On</Button>
                 </Control>
                 <Control>
-                    <Input type={"text"} placeholder={"5"} size={5}/>
+                    <Input
+                        value={minutes}
+                        onChange={(event) => setMinutes(event.target.value)}
+                        type={"text"}
+                        placeholder={"5"}
+                        size={5}/>
                     <p>minutes</p>
                 </Control>
             </ControlGroup>
             <ControlGroup>
                 <Control>
                     <Button onClick={() => turnOff()}>Turn Off</Button>
+                </Control>
+            </ControlGroup>
+            <ControlGroup>
+                <Control>
+                    <p>{message}</p>
                 </Control>
             </ControlGroup>
         </ControlsContainer>

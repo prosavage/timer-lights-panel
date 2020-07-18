@@ -9,11 +9,7 @@ function App() {
   return (
       <PageWrapper>
           <NavbarWrapper/>
-          <Router>
-              <Switch>
-                  <Route path={"/home"} exact component={HomePage}/>
-              </Switch>
-          </Router>
+          <HomePage/>
       </PageWrapper>
   );
 }

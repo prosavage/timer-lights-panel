@@ -13,20 +13,11 @@ const PageContainer = styled.div`
   height: 100%;
 `
 
-const TableContainer = styled.div`
-  height: 25vh;
-`
-
-
 const HomePage = () => {
     return (
         <PageContainer>
             <h3>Controls</h3>
             <Controls/>
-            <h3>Logs</h3>
-            <TableContainer>
-                <LogTable/>
-            </TableContainer>
         </PageContainer>
     )
 }
