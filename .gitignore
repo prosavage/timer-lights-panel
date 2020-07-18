@@ -27,3 +27,4 @@ yarn-error.log*
 .idea/
 timer-lights-panel.iml
 yarn.lock
+.vercel
