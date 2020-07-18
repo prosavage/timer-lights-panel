@@ -7,10 +7,10 @@ import PageWrapper from "./components/page/PageWrapper";
 
 function App() {
   return (
-      <PageWrapper>
-          <NavbarWrapper/>
-          <HomePage/>
-      </PageWrapper>
+          <>
+              <NavbarWrapper/>
+              <HomePage/>
+          </>
   );
 }
 

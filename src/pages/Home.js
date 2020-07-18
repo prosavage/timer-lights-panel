@@ -8,16 +8,21 @@ const PageContainer = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
-  padding: 10px;
   width: 100%;
   height: 100%;
+`
+
+const ContentContainer = styled.div`
+  padding: 10px;
 `
 
 const HomePage = () => {
     return (
         <PageContainer>
-            <h3>Controls</h3>
-            <Controls/>
+            <ContentContainer>
+                <h3>Controls</h3>
+                <Controls/>
+            </ContentContainer>
         </PageContainer>
     )
 }
